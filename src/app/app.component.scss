@@ -1,0 +1,23 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+button {
+  padding: 8px 24px;
+  font-size: 24px;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 16px;
+}
+
+.counter {
+  margin-top: 40px;
+
+  p {
+    font-size: 36px;
+  }
+}
