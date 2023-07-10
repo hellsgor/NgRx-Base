@@ -1,11 +1,11 @@
 <div class="container">
   <div class="buttons">
     <button (click)="increase()">+1</button>
-    <button (click)="decrease()" [disabled]="cannotDecrease">-1</button>
-    <button (click)="clear()" [disabled]="cannotDecrease">=0</button>
+    <button (click)="decrease()" [disabled]="cannotDecrease$ | async">-1</button>
+    <button (click)="clear()" [disabled]="cannotDecrease$ | async">=0</button>
   </div>
   <div class="counter">
-    <p>counter = {{ counter }}</p>
+    <p>counter = {{ count$ | async }}</p>
     <p *ngIf="updatedAt">Updated:  {{ updatedAt | date: 'dd.MM.yyyy HH:mm:ss' }}</p>
   </div>
 </div>
