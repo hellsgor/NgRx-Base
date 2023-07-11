@@ -1,11 +1,18 @@
-import {createAction, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
+import {createAction, createFeatureSelector, createReducer, createSelector, on, props} from '@ngrx/store';
+
+export const COUNTER_KEY = 'counter';
 
 export const increase = createAction('[COUNTER] increase');
 export const decrease = createAction('[COUNTER] decrease');
 export const clear = createAction('[COUNTER] clear');
+export const changeUpdatedAt = createAction(
+  '[COUNTER] change updated at',
+  props<{ updatedAt: number }>(),
+);
 
 export interface ICountState {
   counter: number;
+  updatedAt?: number;
 }
 
 export const initialState: ICountState = {
@@ -25,13 +32,22 @@ export const counterReducer = createReducer(
   on(clear, state => ({
     ...state,
     counter: initialState.counter,
-  }))
+  })),
+  on(changeUpdatedAt, (state, action) => ({
+    ...state,
+    updatedAt: action.updatedAt,
+  })),
 );
 
 export const featureSelector =
-  createFeatureSelector<ICountState>('counter');
+  createFeatureSelector<ICountState>(COUNTER_KEY);
 
 export const countSelector = createSelector(
   featureSelector,
   state => state.counter,
+);
+
+export const updatedAtSelector = createSelector(
+  featureSelector,
+  state => state.updatedAt,
 );

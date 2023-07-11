@@ -6,6 +6,6 @@
   </div>
   <div class="counter">
     <p>counter = {{ count$ | async }}</p>
-    <p *ngIf="updatedAt">Updated:  {{ updatedAt | date: 'dd.MM.yyyy HH:mm:ss' }}</p>
+    <p *ngIf="updatedAt$ | async">Updated:  {{ updatedAt$| async | date: 'dd.MM.yyyy HH:mm:ss' }}</p>
   </div>
 </div>
